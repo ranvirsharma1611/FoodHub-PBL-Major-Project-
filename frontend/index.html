@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodHub - Delicious Meals Delivered Fast</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TOP HEADER / NAVBAR 1 -->
+    <header class="navbar-one">
+        <div class="logo-wrapper">
+            <a href="#" class="logo">
+                Food<span>Hub</span>
+            </a>
+        </div>
+
+        <!-- Menu button with Interactive Dropdown -->
+        <div class="menu-dropdown-wrapper" id="menu-dropdown-wrapper">
+            <button class="menu-link" id="menu-btn" onclick="toggleMenuDropdown(event)" aria-expanded="false" aria-haspopup="true">
+                <i class="fa-solid fa-bars"></i>
+                <span>Menu</span>
+                <i class="fa-solid fa-chevron-down menu-arrow-icon"></i>
+            </button>
+
+            <!-- Menu Dropdown Panel with All 8 Requested Options -->
+            <div class="menu-dropdown-panel" id="menu-dropdown-panel">
+                <div class="menu-dropdown-header-bar">
+                    <span><i class="fa-solid fa-compass text-primary"></i> Explore FoodHub</span>
+                    <button class="menu-dropdown-close" onclick="closeMenuDropdown()">&times;</button>
+                </div>
+
+                <div class="menu-dropdown-grid">
+                    <!-- Column 1: Services & Activity -->
+                    <div class="menu-dropdown-col">
+                        <div class="menu-dropdown-section-title">
+                            <i class="fa-solid fa-user-gear"></i> Services & Activity
+                        </div>
+
+                        <!-- 1. My Orders -->
+                        <a href="javascript:void(0)" class="menu-dropdown-item" onclick="openMenuOption('orders')">
+                            <div class="menu-item-icon bg-orange-light">
+                                <i class="fa-solid fa-receipt text-primary"></i>
+                            </div>
+                            <div class="menu-item-info">
+                                <strong>My Orders</strong>
+                                <small>Track active & past orders</small>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </a>
+
+                        <!-- 2. Reports -->
+                        <a href="javascript:void(0)" class="menu-dropdown-item" onclick="openMenuOption('reports')">
+                            <div class="menu-item-icon bg-blue-light">
+                                <i class="fa-solid fa-chart-pie text-blue"></i>
+                            </div>
+                            <div class="menu-item-info">
+                                <strong>Reports</strong>
+                                <small>Order analytics & spending</small>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </a>
+
+                        <!-- 3. Customer Services -->
+                        <a href="javascript:void(0)" class="menu-dropdown-item" onclick="openMenuOption('support')">
+                            <div class="menu-item-icon bg-green-light">
+                                <i class="fa-solid fa-headset text-green"></i>
+                            </div>
+                            <div class="menu-item-info">
+                                <strong>Customer Services</strong>
+                                <small>24/7 Live help, FAQs & tickets</small>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </a>
+                    </div>
+
+                    <!-- Column 2: Food Categories -->
+                    <div class="menu-dropdown-col">
+                        <div class="menu-dropdown-section-title">
+                            <i class="fa-solid fa-utensils"></i> Food Categories
+                        </div>
+
+                        <!-- 4. Veg -->
+                        <a href="javascript:void(0)" class="menu-dropdown-item" onclick="openMenuOption('veg')">
+                            <div class="menu-item-icon bg-green-light">
+                                <span class="diet-icon veg"></span>
+                            </div>
+                            <div class="menu-item-info">
+                                <strong>Veg Dishes</strong>
+                                <small>100% Pure vegetarian cuisine</small>
+                            </div>
+                            <span class="dropdown-tag green">Pure Veg</span>
+                        </a>
+
+                        <!-- 5. Non Veg -->
+                        <a href="javascript:void(0)" class="menu-dropdown-item" onclick="openMenuOption('nonveg')">
+                            <div class="menu-item-icon bg-red-light">
+                                <span class="diet-icon non-veg"></span>
+                            </div>
+                            <div class="menu-item-info">
+                                <strong>Non Veg Dishes</strong>
+                                <small>Chicken, kebabs, meat specials</small>
+                            </div>
+                            <span class="dropdown-tag red">Popular</span>
+                        </a>
+
+                        <!-- 6. Snacks -->
+                        <a href="javascript:void(0)" class="menu-dropdown-item" onclick="openMenuOption('snacks')">
+                            <div class="menu-item-icon bg-orange-light">
+                                <i class="fa-solid fa-cookie-bite text-primary"></i>
+                            </div>
+                            <div class="menu-item-info">
+                                <strong>Snacks & Sides</strong>
+                                <small>Fries, garlic breads, momos</small>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </a>
+
+                        <!-- 7. Desserts -->
+                        <a href="javascript:void(0)" class="menu-dropdown-item" onclick="openMenuOption('desserts')">
+                            <div class="menu-item-icon bg-purple-light">
+                                <i class="fa-solid fa-ice-cream text-purple"></i>
+                            </div>
+                            <div class="menu-item-info">
+                                <strong>Desserts</strong>
+                                <small>Choco lava, cheesecakes</small>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </a>
+
+                        <!-- 8. Drinks -->
+                        <a href="javascript:void(0)" class="menu-dropdown-item" onclick="openMenuOption('drinks')">
+                            <div class="menu-item-icon bg-blue-light">
+                                <i class="fa-solid fa-mug-hot text-blue"></i>
+                            </div>
+                            <div class="menu-item-info">
+                                <strong>Drinks & Shakes</strong>
+                                <small>Thickshakes, mojitos, coolers</small>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="menu-dropdown-footer">
+                    <span>⚡ Craving exclusive discounts?</span>
+                    <a href="javascript:void(0)" onclick="closeMenuDropdown(); openModal('offers-modal');">
+                        View 50% Off Deals <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Address Selector -->
+        <a href="javascript:void(0)" class="address" onclick="openModal('address-modal')" title="Click to change delivery address">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+                <small>Deliver to <i class="fa-solid fa-chevron-down address-arrow"></i></small>
+                <strong id="navbar-address-display">12 MP Nagar, Bhopal</strong>
+            </div>
+        </a>
+
+        <!-- Search Bar -->
+        <form class="search-box" onsubmit="event.preventDefault(); scrollToMenu();">
+            <input type="search" placeholder="Search food, pizzas, burgers, biryani..." aria-label="Search food">
+            <button type="submit" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+
+        <!-- Cart Button -->
+        <a href="javascript:void(0)" class="nav-icon" id="navbar-cart-btn" onclick="toggleCartDrawer()">
+            <div class="icon-wrap">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="nav-badge" id="cart-badge-count">0</span>
+            </div>
+            <span>Cart</span>
+        </a>
+
+        <!-- Wishlist Button -->
+        <a href="javascript:void(0)" class="nav-icon" onclick="toggleWishlistModal()">
+            <div class="icon-wrap">
+                <i class="fa-regular fa-heart"></i>
+                <span class="nav-badge" id="wishlist-badge-count">0</span>
+            </div>
+            <span>Wishlist</span>
+        </a>
+
+        <!-- Login / User Button -->
+        <a href="javascript:void(0)" class="nav-icon" id="navbar-user-btn" onclick="openModal('auth-modal')">
+            <i class="fa-regular fa-user"></i>
+            <span>Login</span>
+        </a>
+    </header>
+
+    <!-- NAVBAR 2 (Offers, Rewards, Coupons) -->
+    <nav class="navbar-two">
+        <a href="javascript:void(0)" class="offer-link" onclick="openModal('offers-modal')">
+            <i class="fa-solid fa-fire"></i>
+            <span>Today's Special Offers</span>
+        </a>
+
+        <a href="javascript:void(0)" class="offer-link" onclick="renderRewards(); openModal('rewards-modal');">
+            <i class="fa-solid fa-gift"></i>
+            <span>Rewards</span>
+        </a>
+
+        <a href="javascript:void(0)" class="offer-link" onclick="openModal('coupons-modal')">
+            <i class="fa-solid fa-tags"></i>
+            <span>Discounts and Coupons</span>
+        </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <main class="hero">
+        <img
+            src="/frontend/images/Hero-food.png"
+            alt="Delicious food for food delivery"
+            class="hero-background"
+        >
+        <div class="hero-content">
+            <p class="subtitle"><i class="fa-solid fa-bolt"></i> FRESH FOOD, FAST DELIVERY</p>
+
+            <h1>
+                Good Food.<br>Good Mood.
+            </h1>
+
+            <p class="hero-desc">
+                Discover mouth-watering meals from top restaurants in your city. Cooked with authentic ingredients and delivered hot & fresh to your doorstep in 30 minutes!
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#menu-section" class="order-btn" onclick="scrollToMenu()">
+                    Explore Menu <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button class="hero-secondary-btn" onclick="openModal('offers-modal')">
+                    <i class="fa-solid fa-tag"></i> View Deals
+                </button>
+            </div>
+
+            <!-- Hero Highlights Badges -->
+            <div class="hero-highlights">
+                <div class="highlight-item">
+                    <i class="fa-solid fa-motorcycle text-primary"></i>
+                    <div>
+                        <strong>30 Min</strong>
+                        <small>Express Delivery</small>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <div>
+                        <strong>4.9 / 5</strong>
+                        <small>5,000+ Reviews</small>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <i class="fa-solid fa-shield-heart text-green"></i>
+                    <div>
+                        <strong>100%</strong>
+                        <small>Fresh & Hygienic</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- RESTAURANTS & CATEGORIES SECTION -->
+    <section class="category-section" id="categories-bar">
+        <div class="section-container">
+            <!-- Restaurant Filter Tabs -->
+            <div class="restaurant-tabs-bar" id="restaurant-tabs-bar">
+                <span class="restaurant-tabs-title"><i class="fa-solid fa-store"></i> Top Restaurants:</span>
+                <button class="rest-pill active" data-restaurant="all" onclick="filterByRestaurant('all')">
+                    <i class="fa-solid fa-utensils"></i> All Restaurants
+                </button>
+                <button class="rest-pill" data-restaurant="1" onclick="filterByRestaurant(1)">
+                    <i class="fa-solid fa-pepper-hot"></i> Spice Garden <small>(Bhopal)</small>
+                </button>
+                <button class="rest-pill" data-restaurant="2" onclick="filterByRestaurant(2)">
+                    <i class="fa-solid fa-burger"></i> Burger Hub <small>(Indore)</small>
+                </button>
+                <button class="rest-pill" data-restaurant="3" onclick="filterByRestaurant(3)">
+                    <i class="fa-solid fa-pizza-slice"></i> Pizza Corner <small>(Bhopal)</small>
+                </button>
+            </div>
+
+            <div class="category-header">
+                <h2>Craving Something Specific?</h2>
+                <p>Browse our chef-crafted cuisines and popular dishes</p>
+            </div>
+
+            <div class="category-scroll-wrapper">
+                <button class="cat-pill active" data-category="all">
+                    <i class="fa-solid fa-utensils"></i> All Foods
+                </button>
+                <button class="cat-pill" data-category="burgers">
+                    <i class="fa-solid fa-burger"></i> Burgers
+                </button>
+                <button class="cat-pill" data-category="pizzas">
+                    <i class="fa-solid fa-pizza-slice"></i> Pizzas
+                </button>
+                <button class="cat-pill" data-category="biryani">
+                    <i class="fa-solid fa-bowl-rice"></i> Biryani & Rice
+                </button>
+                <button class="cat-pill" data-category="snacks">
+                    <i class="fa-solid fa-cookie-bite"></i> Snacks & Sides
+                </button>
+                <button class="cat-pill" data-category="asian">
+                    <i class="fa-solid fa-bowl-food"></i> Asian & Dimsums
+                </button>
+                <button class="cat-pill" data-category="pasta">
+                    <i class="fa-solid fa-plate-wheat"></i> Pasta & Italian
+                </button>
+                <button class="cat-pill" data-category="desserts">
+                    <i class="fa-solid fa-ice-cream"></i> Desserts
+                </button>
+                <button class="cat-pill" data-category="beverages">
+                    <i class="fa-solid fa-mug-hot"></i> Drinks & Shakes
+                </button>
+                <button class="cat-pill" data-category="healthy">
+                    <i class="fa-solid fa-leaf"></i> Healthy & Salads
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu-section" id="menu-section">
+        <div class="section-container">
+            <div class="menu-controls-bar">
+                <div class="menu-heading-wrap">
+                    <h2>Our Yummy Menu</h2>
+                    <span class="menu-count" id="menu-count-badge">Loading...</span>
+                </div>
+
+                <div class="filter-actions">
+                    <!-- Veg Only Switch -->
+                    <label class="veg-toggle-label" title="Toggle Pure Vegetarian Dishes">
+                        <span class="diet-icon veg"></span>
+                        <span class="label-text">Veg Only</span>
+                        <input type="checkbox" id="veg-only-checkbox">
+                        <span class="toggle-slider"></span>
+                    </label>
+
+                    <!-- Sort Dropdown -->
+                    <div class="sort-wrapper">
+                        <i class="fa-solid fa-arrow-down-short-wide"></i>
+                        <select id="sort-select" aria-label="Sort dishes">
+                            <option value="popular">Most Popular</option>
+                            <option value="rating">Top Rated ⭐</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Food Cards Grid -->
+            <div class="food-grid" id="food-grid">
+                <!-- Dynamically rendered by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIAL DEALS BANNER -->
+    <section class="deal-banner-section">
+        <div class="section-container">
+            <div class="deal-banner">
+                <div class="deal-content">
+                    <span class="deal-tag"><i class="fa-solid fa-fire"></i> DEAL OF THE DAY</span>
+                    <h2>Flat 50% OFF on Your Gourmet Feast!</h2>
+                    <p>Order above ₹299 and get up to ₹150 off instantly. Valid on all premium burgers, pizzas & biryanis!</p>
+                    
+                    <div class="deal-countdown">
+                        <span>Ends in:</span>
+                        <div class="timer-box" id="special-offers-timer">08:24:19</div>
+                    </div>
+
+                    <div class="deal-coupon-box">
+                        <span class="coupon-code-badge">Use Code: <strong>FOODHUB50</strong></span>
+                        <button class="btn-claim-deal" onclick="applyCouponCode('FOODHUB50'); toggleCartDrawer();">
+                            Apply & Order Now <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="deal-image">
+                    <img src="./images/Hero-food.png" alt="Special Deal" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS / FEATURES -->
+    <section class="features-section">
+        <div class="section-container">
+            <div class="section-title text-center">
+                <span class="section-subtitle">SEAMLESS EXPERIENCE</span>
+                <h2>Why Food Lovers Choose Us</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon bg-orange-light">
+                        <i class="fa-solid fa-utensils text-primary"></i>
+                    </div>
+                    <h3>Curated Menus</h3>
+                    <p>Prepared by top master chefs using genuine fresh ingredients with no artificial preservatives.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon bg-green-light">
+                        <i class="fa-solid fa-truck-fast text-green"></i>
+                    </div>
+                    <h3>30-Min Fast Delivery</h3>
+                    <p>Thermal insulated delivery bags ensure your food arrives piping hot and drinks ice-cold.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon bg-blue-light">
+                        <i class="fa-solid fa-shield-halved text-blue"></i>
+                    </div>
+                    <h3>Safe & Contactless</h3>
+                    <p>Sanitized kitchens, temperature-checked delivery riders, and sealed spill-proof food packs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon bg-purple-light">
+                        <i class="fa-solid fa-coins text-purple"></i>
+                    </div>
+                    <h3>Foodie Rewards</h3>
+                    <p>Earn points with every meal and redeem delicious desserts, milkshakes, and free deliveries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS -->
+    <section class="reviews-section">
+        <div class="section-container">
+            <div class="section-title text-center">
+                <span class="section-subtitle">LOVE FROM OUR FOODIES</span>
+                <h2>What Customers Say</h2>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-quote">"The Truffle Cheeseburger and Molten Lava Cake from Burger Hub are literally out of this world! Delivered in 22 minutes steaming hot."</p>
+                    <div class="reviewer-meta">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Customer" class="reviewer-avatar">
+                        <div>
+                            <h4>Priya Verma</h4>
+                            <small>Indore • 22 Vijay Nagar</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-quote">"Best Paneer Butter Masala & Veg Biryani in Bhopal from Spice Garden. Aromatic basmati rice and generous portions. The live tracker is super accurate."</p>
+                    <div class="reviewer-meta">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Customer" class="reviewer-avatar">
+                        <div>
+                            <h4>Aarav Sharma</h4>
+                            <small>Bhopal • 12 MP Nagar</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="review-quote">"The woodfired sourdough Margherita Pizza and Garlic Bread from Pizza Corner are authentic Italian! Fast delivery to Saket Nagar."</p>
+                    <div class="reviewer-meta">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Customer" class="reviewer-avatar">
+                        <div>
+                            <h4>Rahul Mehta</h4>
+                            <small>Bhopal • 18 Saket Nagar</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="section-container footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="#" class="logo footer-logo">
+                        Food<span>Hub</span>
+                    </a>
+                    <p class="footer-tagline">
+                        Delivering happiness and flavor-packed meals directly to your home or office. Fresh ingredients, express delivery, and rich menu varieties.
+                    </p>
+                    <div class="social-links">
+                        <a href="javascript:void(0)" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="javascript:void(0)" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="javascript:void(0)" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#menu-section" onclick="scrollToMenu()">Browse Full Menu</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('offers-modal')">Today's Deals & Offers</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('coupons-modal')">Promo Coupons</a></li>
+                        <li><a href="javascript:void(0)" onclick="renderRewards(); openModal('rewards-modal');">FoodHub Rewards Club</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('history-modal')">Track Past Orders</a></li>
+                        <li><a href="javascript:void(0)" onclick="openReportsModal()">Order Reports & Analytics</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('support-modal')">Customer Services 24/7</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Partner Restaurants</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="filterByRestaurant(1)">Spice Garden (Bhopal)</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterByRestaurant(2)">Burger Hub (Indore)</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterByRestaurant(3)">Pizza Corner (Bhopal)</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterByRestaurant('all')">View All Restaurants</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <p>24/7 Support line available for all delivery inquiries and feedback.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing! Check your email for a 20% discount coupon.', 'success', 'fa-envelope-circle-check'); this.reset();">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                    <div class="contact-pill">
+                        <i class="fa-solid fa-phone"></i> +91 (800) 456-7890
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="section-container footer-bottom-flex">
+                <p>&copy; 2026 FoodHub Inc. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="javascript:void(0)">Privacy Policy</a>
+                    <a href="javascript:void(0)">Terms of Service</a>
+                    <a href="javascript:void(0)" onclick="openModal('support-modal')">Customer Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================================================= -->
+    <!-- MODALS & SIDE DRAWERS -->
+    <!-- ================================================================= -->
+
+    <!-- Backdrop -->
+    <div class="modal-backdrop" id="modal-backdrop" onclick="closeModal()"></div>
+
+    <!-- 1. CART SLIDE-OVER DRAWER -->
+    <aside class="drawer cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+        <div class="drawer-header">
+            <div class="drawer-title">
+                <i class="fa-solid fa-cart-shopping text-primary"></i>
+                <h3>Your Food Cart</h3>
+            </div>
+            <div class="drawer-header-actions">
+                <button class="btn-clear-cart" onclick="clearCart()" title="Empty cart"><i class="fa-solid fa-trash"></i></button>
+                <button class="drawer-close-btn" onclick="toggleCartDrawer()">&times;</button>
+            </div>
+        </div>
+
+        <div class="drawer-body">
+            <div id="free-delivery-progress"></div>
+            <div class="cart-items-container" id="cart-items-container">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <div class="cart-summary-section" id="cart-summary-section">
+                <!-- Coupon Apply Box -->
+                <div class="coupon-input-box">
+                    <div class="coupon-input-group">
+                        <i class="fa-solid fa-ticket"></i>
+                        <input type="text" id="coupon-input" placeholder="Enter promo code (e.g. FOODHUB50)">
+                        <button class="btn-apply-coupon" onclick="applyCouponCode()">Apply</button>
+                    </div>
+                    <div id="applied-coupon-tag"></div>
+                </div>
+
+                <!-- Bill breakdown -->
+                <div class="cart-bill-card" id="cart-bill-breakdown">
+                    <!-- Dynamic Bill Details -->
+                </div>
+
+                <div class="drawer-footer">
+                    <button class="btn-primary btn-checkout" onclick="openCheckoutModal()">
+                        <span>Proceed to Checkout</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 2. WISHLIST MODAL -->
+    <div class="modal" id="wishlist-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-heart text-danger"></i>
+                    <h3>My Saved Favorites</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('wishlist-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="wishlist-items-container" id="wishlist-items-container">
+                    <!-- Injected by app.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. AUTHENTICATION (SIGNUP / LOGIN) MODAL -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-header">
+                <div class="auth-tabs">
+                    <button class="auth-tab-btn active" id="tab-login-btn" onclick="switchAuthTab('login')">Sign In</button>
+                    <button class="auth-tab-btn" id="tab-signup-btn" onclick="switchAuthTab('signup')">Sign Up</button>
+                </div>
+                <button class="modal-close" onclick="closeModal('auth-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Login Form -->
+                <form id="auth-login-form" onsubmit="handleLoginSubmit(event)">
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="login-email" placeholder="name@example.com" required value="aarav@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="login-password" placeholder="••••••••" required value="password123">
+                        </div>
+                    </div>
+
+                    <div class="form-help-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked> Remember me
+                        </label>
+                        <a href="javascript:void(0)" class="text-primary" onclick="showToast('Password reset link sent to your email!', 'info', 'fa-key')">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block">Sign In to FoodHub</button>
+
+                    <!-- Quick Login Demo Users -->
+                    <div class="demo-box">
+                        <small class="text-muted d-block mb-2"><strong>⚡ Quick Login Accounts:</strong></small>
+                        <div class="demo-users-pills">
+                            <button type="button" class="btn-demo-pill" onclick="fillDemoUser('aarav@example.com', 'Aarav Sharma')">
+                                Aarav S.
+                            </button>
+                            <button type="button" class="btn-demo-pill" onclick="fillDemoUser('priya@example.com', 'Priya Verma')">
+                                Priya V.
+                            </button>
+                            <button type="button" class="btn-demo-pill" onclick="fillDemoUser('rahul@example.com', 'Rahul Mehta')">
+                                Rahul M.
+                            </button>
+                            <button type="button" class="btn-demo-pill" onclick="fillDemoUser('ranvir@foodhub.com', 'Ranvir Sharma')">
+                                Ranvir S.
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Signup Form -->
+                <form id="auth-signup-form" style="display: none;" onsubmit="handleSignupSubmit(event)">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="signup-name" placeholder="Aarav Sharma" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="signup-email" placeholder="customer@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-phone">Phone Number</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" id="signup-phone" placeholder="9876500001" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-address">Delivery Address</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <input type="text" id="signup-address" placeholder="12 MP Nagar, Bhopal" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Create Password</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="signup-password" placeholder="Minimum 6 characters" required value="password123">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. PROFILE / USER MENU MODAL -->
+    <div class="modal" id="profile-modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-id-badge text-primary"></i>
+                    <h3>My Account</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('profile-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="profile-avatar"/>
+                    <h4 id="profile-modal-name">Aarav Sharma</h4>
+                    <p id="profile-modal-info">aarav@example.com • 9876500001</p>
+                </div>
+
+                <div class="profile-menu-links">
+                    <a href="javascript:void(0)" class="profile-link-item" onclick="closeModal('profile-modal'); openModal('history-modal');">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>My Past Orders</span>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="profile-link-item" onclick="closeModal('profile-modal'); openReportsModal();">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Order Reports & Spending</span>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="profile-link-item" onclick="closeModal('profile-modal'); openModal('address-modal');">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Manage Saved Addresses</span>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="profile-link-item" onclick="closeModal('profile-modal'); renderRewards(); openModal('rewards-modal');">
+                        <i class="fa-solid fa-coins"></i>
+                        <span>Loyalty Points (280 pts)</span>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </a>
+                    <button class="btn-outline-danger btn-block mt-3" onclick="logoutUser()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ADDRESS SELECTOR MODAL -->
+    <div class="modal" id="address-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-location-dot text-primary"></i>
+                    <h3>Choose Delivery Location</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('address-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="saved-address-list">
+                    <div class="saved-addr-card active" onclick="setDeliveryAddress('12 MP Nagar, Bhopal', 1, 1)">
+                        <div class="addr-tag"><i class="fa-solid fa-house"></i> Home • Bhopal Central</div>
+                        <p>12 MP Nagar, Bhopal - 462011</p>
+                        <span class="selected-indicator"><i class="fa-solid fa-circle-check"></i> Selected</span>
+                    </div>
+
+                    <div class="saved-addr-card" onclick="setDeliveryAddress('45 Arera Colony, Bhopal', 2, 2)">
+                        <div class="addr-tag"><i class="fa-solid fa-briefcase"></i> Work • Bhopal South</div>
+                        <p>45 Arera Colony, Bhopal - 462016</p>
+                    </div>
+
+                    <div class="saved-addr-card" onclick="setDeliveryAddress('22 Vijay Nagar, Indore', 3, 3)">
+                        <div class="addr-tag"><i class="fa-solid fa-building"></i> Office • Indore Central</div>
+                        <p>22 Vijay Nagar, Indore - 452010</p>
+                    </div>
+
+                    <div class="saved-addr-card" onclick="setDeliveryAddress('18 Saket Nagar, Bhopal', 4, 1)">
+                        <div class="addr-tag"><i class="fa-solid fa-location-pin"></i> Other • Bhopal Central</div>
+                        <p>18 Saket Nagar, Bhopal - 462024</p>
+                    </div>
+
+                    <div class="saved-addr-card" onclick="setDeliveryAddress('Apt 4B, Green Glen Layout, Bengaluru', 7, 1)">
+                        <div class="addr-tag"><i class="fa-solid fa-house"></i> Residence • Bengaluru</div>
+                        <p>Apt 4B, Green Glen Layout, Bellandur, Bengaluru - 560103</p>
+                    </div>
+                </div>
+
+                <h4 class="mt-4 mb-2">Or Enter a New Delivery Address:</h4>
+                <form onsubmit="handleCustomAddressSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" id="addr-street" placeholder="Flat / House No. / Street / Building" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <input type="text" id="addr-city" placeholder="City (Bhopal, Indore, Gwalior)" required value="Bhopal">
+                        </div>
+                        <div class="form-group col">
+                            <input type="text" id="addr-pincode" placeholder="Postal Code" required value="462011">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Save and Deliver Here</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. TODAY'S SPECIAL OFFERS MODAL -->
+    <div class="modal" id="offers-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-fire text-primary"></i>
+                    <h3>Today's Exclusive Offers</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('offers-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="offers-grid">
+                    <div class="offer-card">
+                        <div class="offer-card-top">
+                            <span class="badge-discount">50% OFF</span>
+                            <span class="offer-expiry"><i class="fa-regular fa-clock"></i> Ends in 4 hrs</span>
+                        </div>
+                        <h4>Half Price Gourmet Special</h4>
+                        <p>Get 50% off on all pizzas and biryani orders above ₹299 (Max ₹150 discount).</p>
+                        <div class="offer-card-footer">
+                            <code>FOODHUB50</code>
+                            <button class="btn-sm btn-primary" onclick="applyCouponCode('FOODHUB50'); closeModal('offers-modal'); toggleCartDrawer();">
+                                Apply Code
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="offer-card">
+                        <div class="offer-card-top">
+                            <span class="badge-discount">FREE DELIVERY</span>
+                            <span class="offer-expiry">All day</span>
+                        </div>
+                        <h4>Zero Delivery Charges</h4>
+                        <p>Enjoy free doorstep express delivery on all orders above ₹149.</p>
+                        <div class="offer-card-footer">
+                            <code>FREEDEL</code>
+                            <button class="btn-sm btn-primary" onclick="applyCouponCode('FREEDEL'); closeModal('offers-modal'); toggleCartDrawer();">
+                                Apply Code
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="offer-card">
+                        <div class="offer-card-top">
+                            <span class="badge-discount">FLAT ₹100 OFF</span>
+                            <span class="offer-expiry">Weekend Feast</span>
+                        </div>
+                        <h4>Party Feast Discount</h4>
+                        <p>Planning a gathering? Take flat ₹100 off on total orders above ₹499.</p>
+                        <div class="offer-card-footer">
+                            <code>WEEKEND100</code>
+                            <button class="btn-sm btn-primary" onclick="applyCouponCode('WEEKEND100'); closeModal('offers-modal'); toggleCartDrawer();">
+                                Apply Code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. REWARDS MODAL -->
+    <div class="modal" id="rewards-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-gift text-gold"></i>
+                    <h3>FoodHub Loyalty Rewards</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('rewards-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="rewards-balance-card">
+                    <div class="points-circle">
+                        <i class="fa-solid fa-coins"></i>
+                        <span id="reward-points-total">280 pts</span>
+                    </div>
+                    <div class="tier-info">
+                        <h4>Silver Foodie Tier</h4>
+                        <p>Earn 1 point for every ₹20 spent. Redeem points for free dishes and discounts!</p>
+                        <div class="tier-progress-bar">
+                            <div class="tier-fill" style="width: 56%;"></div>
+                        </div>
+                        <small>220 points needed to unlock <strong>Gold Gourmet</strong> (Free delivery for life!)</small>
+                    </div>
+                </div>
+
+                <h4 class="mt-4 mb-2">Claimable Rewards:</h4>
+                <div class="rewards-list" id="rewards-list-container">
+                    <!-- Populated by app.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. DISCOUNTS & COUPONS MODAL -->
+    <div class="modal" id="coupons-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-tags text-primary"></i>
+                    <h3>Available Promo Coupons</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('coupons-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="coupons-list">
+                    <div class="coupon-item">
+                        <div class="coupon-badge">50% OFF</div>
+                        <div class="coupon-details">
+                            <h4>FOODHUB50</h4>
+                            <p>50% OFF up to ₹150 on orders above ₹299</p>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="applyCouponCode('FOODHUB50')">Apply</button>
+                    </div>
+
+                    <div class="coupon-item">
+                        <div class="coupon-badge">20% OFF</div>
+                        <div class="coupon-details">
+                            <h4>TASTY20</h4>
+                            <p>20% OFF up to ₹100 on orders above ₹199</p>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="applyCouponCode('TASTY20')">Apply</button>
+                    </div>
+
+                    <div class="coupon-item">
+                        <div class="coupon-badge">FREE SHIP</div>
+                        <div class="coupon-details">
+                            <h4>FREEDEL</h4>
+                            <p>Free delivery on any order above ₹149</p>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="applyCouponCode('FREEDEL')">Apply</button>
+                    </div>
+
+                    <div class="coupon-item">
+                        <div class="coupon-badge">₹100 OFF</div>
+                        <div class="coupon-details">
+                            <h4>WEEKEND100</h4>
+                            <p>Flat ₹100 discount on orders above ₹499</p>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="applyCouponCode('WEEKEND100')">Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. CHECKOUT MODAL -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-lock text-green"></i>
+                    <h3>Secure Checkout</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('checkout-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="placeOrder(event)">
+                    <!-- Step 1: Delivery Address -->
+                    <div class="checkout-block">
+                        <div class="checkout-block-header">
+                            <span class="step-num">1</span>
+                            <h4>Delivery Location</h4>
+                            <button type="button" class="btn-text" onclick="openModal('address-modal')">Change</button>
+                        </div>
+                        <div class="checkout-address-preview" id="checkout-confirm-address">
+                            12 MP Nagar, Bhopal
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Order Items Summary -->
+                    <div class="checkout-block">
+                        <div class="checkout-block-header">
+                            <span class="step-num">2</span>
+                            <h4>Order Items</h4>
+                        </div>
+                        <div class="checkout-items-summary" id="checkout-items-list">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Payment Method -->
+                    <div class="checkout-block">
+                        <div class="checkout-block-header">
+                            <span class="step-num">3</span>
+                            <h4>Select Payment Method</h4>
+                        </div>
+                        <div class="payment-methods-grid">
+                            <label class="payment-option">
+                                <input type="radio" name="payment_method" value="Cash on Delivery" checked>
+                                <div class="option-content">
+                                    <i class="fa-solid fa-money-bill-wave text-green"></i>
+                                    <div>
+                                        <strong>Cash on Delivery (COD)</strong>
+                                        <small>Pay with cash or QR scan on delivery</small>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment_method" value="UPI">
+                                <div class="option-content">
+                                    <i class="fa-solid fa-mobile-screen-button text-primary"></i>
+                                    <div>
+                                        <strong>UPI / QR Code</strong>
+                                        <small>Google Pay, PhonePe, Paytm, BHIM</small>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment_method" value="Card">
+                                <div class="option-content">
+                                    <i class="fa-solid fa-credit-card text-blue"></i>
+                                    <div>
+                                        <strong>Credit / Debit Card</strong>
+                                        <small>Visa, Mastercard, RuPay</small>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Cooking instructions -->
+                    <div class="form-group mt-3">
+                        <label for="cooking-instructions">Special Instructions (Optional)</label>
+                        <input type="text" id="cooking-instructions" placeholder="e.g. Please ring bell twice, extra ketchup & tissues">
+                    </div>
+
+                    <!-- Total & Place Button -->
+                    <div class="checkout-footer-bar">
+                        <div>
+                            <span>Total to Pay:</span>
+                            <h3 id="checkout-final-amount">₹0</h3>
+                        </div>
+                        <button type="submit" class="btn-primary btn-lg" id="btn-place-order">
+                            <i class="fa-solid fa-shield-halved"></i> Pay & Confirm Order
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. LIVE ORDER TRACKING MODAL -->
+    <div class="modal" id="tracker-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-motorcycle text-primary"></i>
+                    <h3>Live Order Tracking</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('tracker-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="tracker-status-banner">
+                    <div class="tracker-left">
+                        <h4 id="tracker-order-id">#FH-1</h4>
+                        <small>Estimated Arrival: <strong>25-30 Mins</strong></small>
+                    </div>
+                    <div class="tracker-badge pulse">
+                        <i class="fa-solid fa-circle-dot"></i> LIVE UPDATE
+                    </div>
+                </div>
+
+                <!-- 4 Step Interactive Timeline -->
+                <div class="tracker-timeline-wrap">
+                    <div class="track-progress-line">
+                        <div class="track-progress-fill" id="track-progress-fill"></div>
+                    </div>
+
+                    <div class="track-step active" id="track-step-1">
+                        <div class="step-icon"><i class="fa-solid fa-receipt"></i></div>
+                        <span class="step-label">Placed</span>
+                    </div>
+
+                    <div class="track-step pending" id="track-step-2">
+                        <div class="step-icon"><i class="fa-solid fa-fire-burner"></i></div>
+                        <span class="step-label">Prepared</span>
+                    </div>
+
+                    <div class="track-step pending" id="track-step-3">
+                        <div class="step-icon"><i class="fa-solid fa-motorcycle"></i></div>
+                        <span class="step-label">Picked Up</span>
+                    </div>
+
+                    <div class="track-step pending" id="track-step-4">
+                        <div class="step-icon"><i class="fa-solid fa-house-chimney-check"></i></div>
+                        <span class="step-label">Delivered</span>
+                    </div>
+                </div>
+
+                <div class="tracker-details-card">
+                    <div class="detail-row">
+                        <span><i class="fa-solid fa-location-dot"></i> Delivering to:</span>
+                        <strong id="tracker-address">12 MP Nagar, Bhopal</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span><i class="fa-solid fa-wallet"></i> Total Paid:</span>
+                        <strong id="tracker-total">₹471.00 (UPI)</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span><i class="fa-solid fa-motorcycle"></i> Assigned Driver:</span>
+                        <strong id="tracker-driver">Aman Verma (+91 98200 00001)</strong>
+                    </div>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button class="btn-primary btn-block" onclick="closeModal('tracker-modal'); showToast('Thank you for ordering with FoodHub!', 'success', 'fa-heart');">
+                        Got it, Keep Me Updated
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. ORDER HISTORY MODAL -->
+    <div class="modal" id="history-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-clock-rotate-left text-primary"></i>
+                    <h3>My Past Orders</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('history-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="order-history-list" id="order-history-list">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. FOOD DETAIL MODAL -->
+    <div class="modal" id="food-detail-modal">
+        <div class="modal-dialog modal-lg">
+            <button class="modal-close-abs" onclick="closeModal('food-detail-modal')">&times;</button>
+            <div class="modal-body" id="food-detail-body">
+                <!-- Dynamically injected by app.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. REPORTS & ORDER ANALYTICS MODAL (Requested) -->
+    <div class="modal" id="reports-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-chart-pie text-primary"></i>
+                    <h3>Customer Order Reports & Analytics</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('reports-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Overview Stats Grid -->
+                <div class="reports-stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-orange-light"><i class="fa-solid fa-bag-shopping text-primary"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Total Orders</span>
+                            <strong class="stat-val" id="report-total-orders">4 Orders</strong>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-green-light"><i class="fa-solid fa-wallet text-green"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Total Spent</span>
+                            <strong class="stat-val" id="report-total-spent">₹1,566.50</strong>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-purple-light"><i class="fa-solid fa-tags text-purple"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Discounts Saved</span>
+                            <strong class="stat-val text-green" id="report-total-saved">₹280.00</strong>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-blue-light"><i class="fa-solid fa-coins text-gold"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Loyalty Points</span>
+                            <strong class="stat-val text-gold" id="report-points">280 pts</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spending by Category Bars -->
+                <div class="report-section mt-4">
+                    <h4>Cuisine Spending Distribution</h4>
+                    <div class="category-breakdown-list">
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span><i class="fa-solid fa-bowl-rice text-primary"></i> Biryani & North Indian (Spice Garden)</span>
+                                <strong>₹660 (42%)</strong>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 42%;"></div></div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span><i class="fa-solid fa-burger text-primary"></i> Burgers & Fast Food (Burger Hub)</span>
+                                <strong>₹450 (29%)</strong>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 29%; background: #3b82f6;"></div></div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span><i class="fa-solid fa-pizza-slice text-primary"></i> Pizzas & Garlic Bread (Pizza Corner)</span>
+                                <strong>₹330 (21%)</strong>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 21%; background: #10b981;"></div></div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span><i class="fa-solid fa-ice-cream text-primary"></i> Desserts & Beverages</span>
+                                <strong>₹126.50 (8%)</strong>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 8%; background: #8b5cf6;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Invoice Statements -->
+                <div class="report-section mt-4">
+                    <div class="d-flex-between mb-2">
+                        <h4>Recent Order Invoices</h4>
+                        <button class="btn-outline-primary btn-sm" onclick="downloadAllReports()">
+                            <i class="fa-solid fa-file-arrow-down"></i> Export Report
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="report-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Restaurant</th>
+                                    <th>Items</th>
+                                    <th>Payment</th>
+                                    <th>Amount</th>
+                                    <th>Invoice</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reports-invoices-tbody">
+                                <tr>
+                                    <td><strong>#FH-1</strong></td>
+                                    <td>Spice Garden</td>
+                                    <td>Paneer Butter Masala (x1), Veg Biryani (x1)</td>
+                                    <td><span class="badge-payment">UPI</span></td>
+                                    <td>₹471.00</td>
+                                    <td><button class="btn-invoice" onclick="downloadInvoice('FH-1')"><i class="fa-solid fa-download"></i> PDF</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#FH-2</strong></td>
+                                    <td>Burger Hub</td>
+                                    <td>Classic Burger (x1), French Fries (x2)</td>
+                                    <td><span class="badge-payment">Card</span></td>
+                                    <td>₹319.00</td>
+                                    <td><button class="btn-invoice" onclick="downloadInvoice('FH-2')"><i class="fa-solid fa-download"></i> PDF</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#FH-3</strong></td>
+                                    <td>Pizza Corner</td>
+                                    <td>Margherita Pizza (x1), Garlic Bread (x1)</td>
+                                    <td><span class="badge-payment">UPI</span></td>
+                                    <td>₹376.50</td>
+                                    <td><button class="btn-invoice" onclick="downloadInvoice('FH-3')"><i class="fa-solid fa-download"></i> PDF</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 14. CUSTOMER SERVICES & HELP MODAL (Requested) -->
+    <div class="modal" id="support-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-headset text-primary"></i>
+                    <h3>Customer Services & Support 24/7</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal('support-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Support Channels Banner -->
+                <div class="support-channels-grid">
+                    <div class="support-channel-card">
+                        <i class="fa-solid fa-phone text-primary"></i>
+                        <h4>24/7 Helpline</h4>
+                        <p>Talk directly with our support team</p>
+                        <a href="tel:+918004567890" class="btn-channel">+91 (800) 456-7890</a>
+                    </div>
+                    <div class="support-channel-card">
+                        <i class="fa-solid fa-comments text-green"></i>
+                        <h4>Live Chat</h4>
+                        <p>Instant answers from customer care</p>
+                        <button class="btn-channel green" onclick="startLiveChatSim()">Start Live Chat</button>
+                    </div>
+                    <div class="support-channel-card">
+                        <i class="fa-solid fa-envelope text-blue"></i>
+                        <h4>Email Support</h4>
+                        <p>Response within 30 minutes</p>
+                        <a href="mailto:support@foodhub.com" class="btn-channel blue">support@foodhub.com</a>
+                    </div>
+                </div>
+
+                <div class="support-content-grid mt-4">
+                    <!-- Column 1: Raise a Support Ticket Form -->
+                    <div class="support-ticket-col">
+                        <h4><i class="fa-solid fa-ticket text-primary"></i> Raise a Support Ticket</h4>
+                        <form onsubmit="handleSupportTicketSubmit(event)">
+                            <div class="form-group">
+                                <label for="ticket-name">Your Name</label>
+                                <input type="text" id="ticket-name" required value="Aarav Sharma">
+                            </div>
+                            <div class="form-group">
+                                <label for="ticket-email">Email Address</label>
+                                <input type="email" id="ticket-email" required value="aarav@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="ticket-category">Issue Category</label>
+                                <select id="ticket-category">
+                                    <option value="delivery">Where is my order? (Delivery Delay)</option>
+                                    <option value="quality">Food Quality or Missing Item</option>
+                                    <option value="payment">Payment or Refund Issue</option>
+                                    <option value="coupon">Coupon or Discount Problem</option>
+                                    <option value="other">General Inquiry / Feedback</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ticket-message">Message / Details</label>
+                                <textarea id="ticket-message" rows="3" placeholder="Describe the issue with your order..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary btn-block">
+                                <i class="fa-solid fa-paper-plane"></i> Submit Ticket
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Column 2: Frequently Asked Questions Accordion -->
+                    <div class="support-faq-col">
+                        <h4><i class="fa-solid fa-circle-question text-primary"></i> Frequently Asked Questions</h4>
+                        <div class="faq-accordion">
+                            <details class="faq-item" open>
+                                <summary>How do I track my delivery rider in real time?</summary>
+                                <p>Once your order is placed, click on "Menu" -> "My Orders" or view the Live Order Tracker modal to see real-time updates and contact your assigned rider.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>What is FoodHub's average delivery time?</summary>
+                                <p>Our partner restaurants prepare food fresh in 15-20 minutes, and our delivery partners deliver within 30 minutes in thermal insulated bags.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>How do refunds and cancellations work?</summary>
+                                <p>Cancellations are accepted before the kitchen begins preparation. In accordance with our refund policy, refunds are automatically returned to your original payment method within 2-4 business hours.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>Can I apply multiple coupons on one order?</summary>
+                                <p>You can apply 1 promo coupon code per order, plus you can redeem your FoodHub Rewards points for free dishes simultaneously!</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core App JS -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

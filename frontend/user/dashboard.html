@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - FoodHub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Sidebar dynamically injected by ui.js -->
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <!-- Topbar dynamically injected by ui.js -->
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <!-- Page Header -->
+        <div class="page-header">
+          <div>
+            <h1 class="page-title" id="welcome-title">Welcome back, Aarav!</h1>
+            <p class="page-subtitle">Your FoodHub orders, rewards balance, and live deliveries</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="track.html" class="btn btn-outline">
+              <i class="fa-solid fa-location-crosshairs text-primary"></i>
+              <span>Live Tracker</span>
+            </a>
+            <a href="../index.html#menu-section" class="btn btn-primary">
+              <i class="fa-solid fa-utensils"></i>
+              <span>Order Food</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 KPI Stat Cards Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+          <!-- Stat 1: Total Orders -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Total Orders</span>
+              <div class="stat-icon" style="background: var(--color-primary-light); color: var(--color-primary);">
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+            </div>
+            <div class="stat-val" id="stat-orders-count">4 Orders</div>
+            <div class="stat-subtitle text-success">
+              <i class="fa-solid fa-circle-check"></i> All fulfilled on time
+            </div>
+          </div>
+
+          <!-- Stat 2: Total Spent -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Total Spent</span>
+              <div class="stat-icon" style="background: var(--color-success-light); color: var(--color-success);">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+            </div>
+            <div class="stat-val" id="stat-total-spent">₹1,566.50</div>
+            <div class="stat-subtitle text-muted">
+              <i class="fa-solid fa-tag"></i> ₹280.00 saved in coupons
+            </div>
+          </div>
+
+          <!-- Stat 3: Reward Points -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Reward Points</span>
+              <div class="stat-icon" style="background: var(--color-accent-light); color: var(--color-accent);">
+                <i class="fa-solid fa-coins"></i>
+              </div>
+            </div>
+            <div class="stat-val" id="stat-reward-points" style="color: #d97706;">280 pts</div>
+            <div class="stat-subtitle text-muted">
+              <i class="fa-solid fa-gift"></i> Ready to redeem free dish
+            </div>
+          </div>
+
+          <!-- Stat 4: Active Delivery -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Delivery Status</span>
+              <div class="stat-icon" style="background: var(--color-info-light); color: var(--color-info);">
+                <i class="fa-solid fa-motorcycle"></i>
+              </div>
+            </div>
+            <div class="stat-val" style="font-size: 1.35rem; color: var(--color-info);" id="stat-active-delivery">Arriving Soon</div>
+            <div class="stat-subtitle text-muted">
+              <i class="fa-regular fa-clock"></i> Est. 18-22 mins
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Order Card Banner -->
+        <div class="table-card" style="margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #fffaf7 0%, #fff1eb 100%); border: 1.5px solid #fed7aa;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1.25rem;">
+              <div style="width: 54px; height: 54px; border-radius: var(--radius-md); background: var(--color-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                <i class="fa-solid fa-fire-burner"></i>
+              </div>
+              <div>
+                <span class="badge badge-warning" style="margin-bottom: 0.35rem;">
+                  <i class="fa-solid fa-spinner fa-spin"></i> Out for Express Delivery
+                </span>
+                <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark);">Order #FH-1001 • Spice Garden (Bhopal)</h3>
+                <p class="text-sm text-muted">1x Paneer Butter Masala, 1x Royal Hyderabadi Dum Biryani</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <a href="track.html" class="btn btn-primary">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                <span>Track Rider Live</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders Table -->
+        <div class="table-card">
+          <div class="table-header">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark);">Recent Orders</h3>
+              <p class="text-sm text-muted">Your past orders recorded in MySQL database</p>
+            </div>
+            <a href="orders.html" class="btn btn-outline btn-sm">
+              <span>View All Past Orders</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order Ref</th>
+                  <th>Restaurant</th>
+                  <th>Items Snapshot</th>
+                  <th>Payment</th>
+                  <th>Total Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-orders-tbody">
+                <tr>
+                  <td><strong>#FH-1</strong></td>
+                  <td>Spice Garden</td>
+                  <td>Paneer Butter Masala (x1), Veg Biryani (x1)</td>
+                  <td><span class="badge badge-info">UPI</span></td>
+                  <td><strong>₹471.00</strong></td>
+                  <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td><a href="track.html" class="btn btn-outline btn-sm">Track</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-2</strong></td>
+                  <td>Burger Hub</td>
+                  <td>Classic Cheeseburger (x1), Crispy French Fries (x1)</td>
+                  <td><span class="badge badge-info">Card</span></td>
+                  <td><strong>₹339.00</strong></td>
+                  <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td><a href="orders.html" class="btn btn-outline btn-sm">Details</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-3</strong></td>
+                  <td>Pizza Corner</td>
+                  <td>Margherita Gourmet Pizza (x1), Toasted Garlic Bread (x1)</td>
+                  <td><span class="badge badge-info">UPI</span></td>
+                  <td><strong>₹376.50</strong></td>
+                  <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td><a href="orders.html" class="btn btn-outline btn-sm">Details</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('user', 'dashboard');
+
+      const user = JSON.parse(localStorage.getItem('foodhub_user')) || { name: 'Aarav Sharma' };
+      const welcomeTitle = document.getElementById('welcome-title');
+      if (welcomeTitle) {
+        welcomeTitle.innerText = `Welcome back, ${user.name.split(' ')[0]}!`;
+      }
+
+      // Load orders dynamically if API available
+      API.getOrders()
+        .then(res => {
+          if (res.success && res.data && res.data.length > 0) {
+            const countEl = document.getElementById('stat-orders-count');
+            if (countEl) countEl.innerText = `${res.data.length} Orders`;
+          }
+        })
+        .catch(() => {});
+    });
+  </script>
+</body>
+</html>

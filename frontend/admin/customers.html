@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers & Reviews Directory - FoodHub Admin</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Registered Customers & Verified Reviews</h1>
+            <p class="page-subtitle">Customer accounts in MySQL and post-delivery food quality ratings</p>
+          </div>
+        </div>
+
+        <!-- Customers Directory Table -->
+        <div class="table-card" style="margin-bottom: 2rem;">
+          <div class="table-header">
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark);">
+              Customers Directory (3 Registered)
+            </h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Customer ID</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Default Address</th>
+                  <th>Total Spent</th>
+                  <th>Loyalty Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#CUST-1</strong></td>
+                  <td>Aarav Sharma</td>
+                  <td>aarav@example.com</td>
+                  <td>+91 98765 00001</td>
+                  <td>12 MP Nagar, Zone 1, Bhopal</td>
+                  <td><strong>₹1,566.50</strong></td>
+                  <td><span class="badge badge-warning"><i class="fa-solid fa-crown"></i> Gold Tier (280 pts)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>#CUST-2</strong></td>
+                  <td>Pooja Patel</td>
+                  <td>pooja@example.com</td>
+                  <td>+91 98765 00002</td>
+                  <td>45 Scheme 54, Vijay Nagar, Indore</td>
+                  <td><strong>₹339.00</strong></td>
+                  <td><span class="badge badge-info">Silver Tier (60 pts)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>#CUST-3</strong></td>
+                  <td>Ranvir Sharma</td>
+                  <td>ranvir@example.com</td>
+                  <td>+91 98765 00003</td>
+                  <td>Flat 402, Royal Enclave, Bhopal</td>
+                  <td><strong>₹220.00</strong></td>
+                  <td><span class="badge badge-primary">Silver Tier (40 pts)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Verified Reviews Stream -->
+        <div class="table-card">
+          <div class="table-header">
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark);">
+              <i class="fa-solid fa-star text-gold"></i> Customer Dish Reviews & Feedback
+            </h3>
+          </div>
+          <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+            <div style="border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <strong>Aarav Sharma • Order #FH-1 (Spice Garden)</strong>
+                <span class="badge badge-success"><i class="fa-solid fa-star text-gold"></i> 5.0 Star Rating</span>
+              </div>
+              <p class="text-sm text-muted">"Food was hot, delicious, and delivered well within 25 minutes! Loved the paneer butter masala."</p>
+            </div>
+
+            <div style="border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <strong>Pooja Patel • Order #FH-2 (Burger Hub)</strong>
+                <span class="badge badge-success"><i class="fa-solid fa-star text-gold"></i> 4.8 Star Rating</span>
+              </div>
+              <p class="text-sm text-muted">"The classic cheeseburger and crispy fries were super fresh. Packaging was eco-friendly."</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('admin', 'customers');
+    });
+  </script>
+</body>
+</html>

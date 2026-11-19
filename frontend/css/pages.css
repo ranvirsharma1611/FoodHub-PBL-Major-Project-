@@ -1,0 +1,234 @@
+/* ==========================================================================
+   FoodHub - pages.css
+   Page-Specific Styles (Auth Split-Screen, Live Order Tracker Timeline,
+   Reports Spending Bars, Admin Dispatch Controls)
+   ========================================================================== */
+
+/* 1. AUTH PAGES (Login & Register Split-Screen) */
+.auth-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.auth-form-side {
+  padding: 3.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 540px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.auth-visual-side {
+  background: linear-gradient(135deg, #f36b3f 0%, #ff9900 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem;
+  color: #ffffff;
+}
+
+.auth-visual-side::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80') center/cover;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+}
+
+.auth-brand-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.auth-brand-logo span {
+  background: #ffffff;
+  color: #000000;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.auth-quote {
+  position: relative;
+  z-index: 10;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.auth-quote small {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0.85;
+  margin-top: 0.75rem;
+}
+
+.demo-credentials-box {
+  background: var(--color-surface-subtle);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.demo-account-chips {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.demo-chip {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.demo-chip:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .auth-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .auth-visual-side {
+    display: none;
+  }
+  .auth-form-side {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* 2. ORDER TRACKING TIMELINE */
+.tracker-card {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.timeline-stepper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 2.5rem 0;
+}
+
+.timeline-stepper::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  right: 30px;
+  height: 4px;
+  background: var(--color-border-subtle);
+  z-index: 1;
+}
+
+.timeline-progress-fill {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  height: 4px;
+  background: var(--color-primary);
+  z-index: 2;
+  transition: width 0.5s ease;
+}
+
+.timeline-node {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.node-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: var(--transition);
+}
+
+.timeline-node.completed .node-circle {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.timeline-node.active .node-circle {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 0 0 6px var(--color-primary-light);
+  animation: pulseGlow 1.8s infinite;
+}
+
+.node-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.node-time {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* 3. DRIVER INFO CARD */
+.driver-info-box {
+  background: var(--color-primary-light);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  border: 1px solid #ffd7cc;
+}
+
+.driver-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.driver-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}

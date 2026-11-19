@@ -1,0 +1,60 @@
+[
+  {
+    "id": "FH-7297",
+    "createdAt": "2026-10-17T07:21:16.637Z",
+    "customer": {
+      "name": "Ranvir Sharma",
+      "phone": "+91 98765 43210",
+      "address": "Apt 4B, Bellandur, Bengaluru"
+    },
+    "items": [
+      {
+        "price": 249,
+        "quantity": 2,
+        "name": "Classic Truffle Cheeseburger",
+        "id": 1
+      }
+    ],
+    "subtotal": 498,
+    "discount": 50,
+    "deliveryFee": 0,
+    "tax": 25,
+    "total": 473,
+    "paymentMethod": "Cash on Delivery",
+    "status": "Order Confirmed",
+    "statusStep": 1,
+    "estimatedDelivery": "30-35 mins"
+  },
+  {
+    "id": "FH-9482",
+    "createdAt": "2026-10-16T19:30:00.000Z",
+    "customer": {
+      "name": "Ranvir Sharma",
+      "phone": "+91 98765 43210",
+      "address": "Apt 4B, Green Glen Layout, Bellandur, Bengaluru"
+    },
+    "items": [
+      {
+        "id": 1,
+        "name": "Classic Truffle Cheeseburger",
+        "price": 249,
+        "quantity": 2
+      },
+      {
+        "id": 13,
+        "name": "Belgian Chocolate Fudge Thickshake",
+        "price": 169,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 667,
+    "discount": 100,
+    "deliveryFee": 0,
+    "tax": 28,
+    "total": 595,
+    "paymentMethod": "UPI (Google Pay)",
+    "status": "Delivered",
+    "statusStep": 4,
+    "estimatedDelivery": "Delivered at 20:10"
+  }
+]

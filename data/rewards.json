@@ -1,0 +1,62 @@
+{
+  "userPoints": 303,
+  "tier": "Silver Foodie",
+  "pointsToNextTier": 220,
+  "nextTier": "Gold Gourmet",
+  "rewards": [
+    {
+      "id": "rew_1",
+      "name": "Free Choco Lava Cake",
+      "pointsCost": 150,
+      "category": "Free Dish",
+      "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80",
+      "description": "Redeem for 1 free Molten Chocolate Lava Cake with your order."
+    },
+    {
+      "id": "rew_2",
+      "name": "Flat ₹75 Off Voucher",
+      "pointsCost": 200,
+      "category": "Discount",
+      "image": "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=400&q=80",
+      "description": "Instant ₹75 off on any order with minimum bill of ₹200."
+    },
+    {
+      "id": "rew_3",
+      "name": "Free Belgian Thickshake",
+      "pointsCost": 250,
+      "category": "Free Beverage",
+      "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80",
+      "description": "Redeem for 1 rich Belgian Chocolate Thickshake."
+    },
+    {
+      "id": "rew_4",
+      "name": "Free Delivery for 1 Month",
+      "pointsCost": 400,
+      "category": "VIP Perk",
+      "image": "https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=400&q=80",
+      "description": "Zero delivery fees on all your orders for the next 30 days."
+    }
+  ],
+  "history": [
+    {
+      "date": "17 Oct 2026",
+      "action": "Order #FH-7297 Placed",
+      "points": "+23 pts"
+    },
+    {
+      "date": "12 Oct 2026",
+      "action": "Order #FH-8921 Completed",
+      "points": "+45 pts"
+    },
+    {
+      "date": "05 Oct 2026",
+      "action": "Welcome Bonus",
+      "points": "+100 pts"
+    },
+    {
+      "date": "02 Oct 2026",
+      "action": "Order #FH-8104 Completed",
+      "points": "+35 pts"
+    }
+  ]
+}

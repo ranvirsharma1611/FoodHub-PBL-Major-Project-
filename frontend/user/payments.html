@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Methods & Wallet - FoodHub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Payment Methods & FoodHub Wallet</h1>
+            <p class="page-subtitle">Manage digital wallets, saved UPI handles, debit/credit cards, and transactions</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-primary" onclick="addFundsPrompt()">
+              <i class="fa-solid fa-plus"></i>
+              <span>Top-up FoodHub Cash</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Wallet Balance Card -->
+        <div class="table-card" style="margin-bottom: 2rem; padding: 2rem; background: linear-gradient(135deg, #111827 0%, #1f2937 100%); color: #ffffff;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span class="text-xs text-muted font-bold" style="text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af !important;">Available Balance</span>
+              <h2 style="font-size: 2.25rem; font-weight: 800; color: #ffffff; margin-top: 0.25rem;">₹520.00</h2>
+              <p class="text-sm" style="color: #9ca3af; margin-top: 0.25rem;"><i class="fa-solid fa-bolt text-primary"></i> 1-Click Checkout Enabled</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button class="btn btn-outline" style="color: #fff; border-color: rgba(255,255,255,0.25);" onclick="addFundsPrompt()">+ Add Money</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saved Payment Methods Grid -->
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 1rem;">
+          Saved Payment Options
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+          <!-- UPI 1 -->
+          <div class="stat-card" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: #f0fdf4; color: #16a34a; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                <i class="fa-solid fa-mobile-screen"></i>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 0.95rem; color: var(--color-text-dark);">aarav@okhdfcbank</strong>
+                <span class="text-xs text-muted">Primary UPI Handle</span>
+              </div>
+            </div>
+            <span class="badge badge-success">Verified</span>
+          </div>
+
+          <!-- Card 1 -->
+          <div class="stat-card" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 0.95rem; color: var(--color-text-dark);">HDFC Regalia •••• 4242</strong>
+                <span class="text-xs text-muted">Expires 08/29</span>
+              </div>
+            </div>
+            <span class="badge badge-info">Default Card</span>
+          </div>
+        </div>
+
+        <!-- Transaction History Table -->
+        <div class="table-card">
+          <div class="table-header">
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark);">Wallet & Payment Ledger</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Transaction Ref</th>
+                  <th>Date & Time</th>
+                  <th>Description</th>
+                  <th>Method</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>TXN_108291</code></td>
+                  <td>17 Oct 2026, 08:45 PM</td>
+                  <td>Paid for Order #FH-1001 (Spice Garden)</td>
+                  <td>UPI</td>
+                  <td class="text-danger"><strong>-₹471.00</strong></td>
+                  <td><span class="badge badge-success">Paid</span></td>
+                </tr>
+                <tr>
+                  <td><code>TXN_108200</code></td>
+                  <td>15 Oct 2026, 11:30 AM</td>
+                  <td>Wallet Top-up via Net Banking</td>
+                  <td>HDFC Bank</td>
+                  <td class="text-success"><strong>+₹500.00</strong></td>
+                  <td><span class="badge badge-success">Credited</span></td>
+                </tr>
+                <tr>
+                  <td><code>TXN_107982</code></td>
+                  <td>14 Oct 2026, 09:30 PM</td>
+                  <td>Paid for Order #FH-1003 (Pizza Corner)</td>
+                  <td>Card</td>
+                  <td class="text-danger"><strong>-₹376.50</strong></td>
+                  <td><span class="badge badge-success">Paid</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('user', 'payments');
+    });
+
+    function addFundsPrompt() {
+      const amt = prompt('Enter top-up amount in INR (e.g. 500, 1000):', '500');
+      if (amt && !isNaN(amt)) {
+        UI.showToast(`Successfully added ₹${amt}.00 to FoodHub Cash!`, 'success', 'fa-wallet');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Fleet & Riders - FoodHub Admin</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Delivery Fleet & Riders</h1>
+            <p class="page-subtitle">Rider roster, live GPS tracking status, and zone coverage in MySQL</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-primary" onclick="alert('Rider registration dialog triggered!')">
+              <i class="fa-solid fa-plus"></i>
+              <span>Add Delivery Rider</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-header">
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark);">
+              Registered Delivery Partners (3)
+            </h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Driver Name</th>
+                  <th>Contact Number</th>
+                  <th>Assigned Zone</th>
+                  <th>Vehicle</th>
+                  <th>Availability</th>
+                  <th>Current Task</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <div class="stat-icon" style="background: var(--color-primary-light); color: var(--color-primary); width: 36px; height: 36px; font-size: 1rem;">
+                        <i class="fa-solid fa-motorcycle"></i>
+                      </div>
+                      <strong>Aman Verma</strong>
+                    </div>
+                  </td>
+                  <td>+91 98200 00001</td>
+                  <td><span class="badge badge-info">Bhopal Central (Zone 1)</span></td>
+                  <td>Hero Electric Optima</td>
+                  <td><span class="badge badge-warning">On Delivery</span></td>
+                  <td>Delivering #FH-1001</td>
+                  <td><a href="../user/track.html" class="btn btn-outline btn-sm">View Telemetry</a></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <div class="stat-icon" style="background: var(--color-success-light); color: var(--color-success); width: 36px; height: 36px; font-size: 1rem;">
+                        <i class="fa-solid fa-motorcycle"></i>
+                      </div>
+                      <strong>Rahul Sen</strong>
+                    </div>
+                  </td>
+                  <td>+91 98200 00002</td>
+                  <td><span class="badge badge-info">Indore North (Zone 2)</span></td>
+                  <td>TVS iQube</td>
+                  <td><span class="badge badge-success">Available</span></td>
+                  <td>Waiting for Kitchen</td>
+                  <td><button class="btn btn-outline btn-sm" onclick="assignRider('Rahul Sen')">Assign Order</button></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <div class="stat-icon" style="background: var(--color-surface-subtle); color: var(--color-text-muted); width: 36px; height: 36px; font-size: 1rem;">
+                        <i class="fa-solid fa-motorcycle"></i>
+                      </div>
+                      <strong>Vikram Joshi</strong>
+                    </div>
+                  </td>
+                  <td>+91 98200 00003</td>
+                  <td><span class="badge badge-info">Bhopal West (Zone 3)</span></td>
+                  <td>Honda Activa 6G</td>
+                  <td><span class="badge badge-danger">Off Duty</span></td>
+                  <td>Shift Completed</td>
+                  <td><button class="btn btn-outline btn-sm" onclick="toggleDuty('Vikram Joshi')">Set On Duty</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('admin', 'drivers');
+    });
+
+    function assignRider(name) {
+      UI.showToast(`Order assigned to rider ${name}!`, 'success', 'fa-motorcycle');
+    }
+
+    function toggleDuty(name) {
+      UI.showToast(`Rider ${name} status updated to ON DUTY!`, 'info', 'fa-clock');
+    }
+  </script>
+</body>
+</html>

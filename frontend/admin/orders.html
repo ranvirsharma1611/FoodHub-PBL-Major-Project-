@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Order Dispatch Board - FoodHub Admin</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Live Order Dispatch & Kitchen Status</h1>
+            <p class="page-subtitle">Track, accept, prepare, assign drivers, and transition MySQL order states</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-outline" onclick="location.reload()">
+              <i class="fa-solid fa-rotate"></i>
+              <span>Refresh Queue</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-header">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn btn-primary btn-sm" onclick="filterStatus('all')">All Orders</button>
+              <button class="btn btn-outline btn-sm" onclick="filterStatus('Placed')">Placed</button>
+              <button class="btn btn-outline btn-sm" onclick="filterStatus('Prepared')">In Kitchen</button>
+              <button class="btn btn-outline btn-sm" onclick="filterStatus('Picked Up')">Out with Rider</button>
+              <button class="btn btn-outline btn-sm" onclick="filterStatus('Delivered')">Delivered</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer Info</th>
+                  <th>Restaurant</th>
+                  <th>Item Details</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Assigned Rider</th>
+                  <th>Transition Order State</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-tbody">
+                <tr>
+                  <td><strong>#FH-1001</strong></td>
+                  <td>Aarav Sharma<br><small class="text-muted">98765 00001</small></td>
+                  <td>Spice Garden</td>
+                  <td>Paneer Butter Masala (x1), Veg Biryani (x1)</td>
+                  <td><strong>₹471.00</strong></td>
+                  <td><span class="badge badge-warning">Picked Up</span></td>
+                  <td>Aman Verma</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm" onclick="transitionState('FH-1001', 'Delivered')">
+                      <i class="fa-solid fa-check"></i> Mark Delivered
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-1002</strong></td>
+                  <td>Pooja Patel<br><small class="text-muted">98765 00002</small></td>
+                  <td>Burger Hub</td>
+                  <td>Classic Cheeseburger (x1), Crispy French Fries (x1)</td>
+                  <td><strong>₹339.00</strong></td>
+                  <td><span class="badge badge-info">Prepared</span></td>
+                  <td>Rahul Sen</td>
+                  <td>
+                    <button class="btn btn-outline btn-sm" onclick="transitionState('FH-1002', 'Picked Up')">
+                      <i class="fa-solid fa-motorcycle"></i> Hand to Rider
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-1003</strong></td>
+                  <td>Ranvir Sharma<br><small class="text-muted">98765 00003</small></td>
+                  <td>Pizza Corner</td>
+                  <td>Woodfired Margherita Pizza (x1)</td>
+                  <td><strong>₹220.00</strong></td>
+                  <td><span class="badge badge-success">Delivered</span></td>
+                  <td>Aman Verma</td>
+                  <td><span class="text-xs text-muted font-bold"><i class="fa-solid fa-circle-check text-success"></i> Completed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('admin', 'orders');
+    });
+
+    function transitionState(orderId, newState) {
+      UI.showToast(`Order ${orderId} transitioned to '${newState}' in MySQL database!`, 'success', 'fa-arrow-right-arrow-left');
+      setTimeout(() => location.reload(), 1200);
+    }
+
+    function filterStatus(status) {
+      const rows = document.querySelectorAll('#admin-orders-tbody tr');
+      rows.forEach(r => {
+        if (status === 'all') {
+          r.style.display = '';
+        } else {
+          r.style.display = r.innerText.includes(status) ? '' : 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

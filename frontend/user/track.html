@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Delivery Tracker - FoodHub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Live Order Tracker</h1>
+            <p class="page-subtitle">Real-time driver location telemetry, kitchen status, and estimated arrival time</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="support.html" class="btn btn-outline">
+              <i class="fa-solid fa-headset text-primary"></i>
+              <span>Need Help?</span>
+            </a>
+            <a href="orders.html" class="btn btn-outline">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <span>All Orders</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tracker Main Card -->
+        <div class="tracker-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 1.25rem;">
+            <div>
+              <span class="badge badge-warning" id="tracker-status-badge">
+                <i class="fa-solid fa-spinner fa-spin"></i> Out for Express Delivery
+              </span>
+              <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--color-text-dark); margin-top: 0.5rem;">
+                Estimated Delivery: <span class="text-primary" id="tracker-eta">18-22 Mins</span>
+              </h2>
+            </div>
+            <div style="text-align: right;">
+              <small class="text-xs text-muted" style="display: block;">Order Reference</small>
+              <strong style="font-size: 1.15rem; color: var(--color-text-dark);" id="tracker-order-id">#FH-1001</strong>
+            </div>
+          </div>
+
+          <!-- 4-Step Animated Timeline -->
+          <div class="timeline-stepper">
+            <div class="timeline-progress-fill" style="width: 75%;"></div>
+
+            <!-- Step 1 -->
+            <div class="timeline-node completed">
+              <div class="node-circle"><i class="fa-solid fa-check"></i></div>
+              <div class="node-title">Order Placed</div>
+              <div class="node-time">08:45 PM</div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="timeline-node completed">
+              <div class="node-circle"><i class="fa-solid fa-check"></i></div>
+              <div class="node-title">Kitchen Preparing</div>
+              <div class="node-time">08:48 PM</div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="timeline-node active">
+              <div class="node-circle"><i class="fa-solid fa-motorcycle"></i></div>
+              <div class="node-title">On the Way</div>
+              <div class="node-time">09:02 PM</div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="timeline-node">
+              <div class="node-circle"><i class="fa-solid fa-house"></i></div>
+              <div class="node-title">Delivered</div>
+              <div class="node-time">Est. 09:15 PM</div>
+            </div>
+          </div>
+
+          <!-- Driver Info Card -->
+          <div class="driver-info-box">
+            <div class="driver-meta">
+              <div class="driver-avatar">
+                <i class="fa-solid fa-helmet-safety"></i>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 1rem; color: var(--color-text-dark);" id="driver-name">Aman Verma</strong>
+                <span class="text-xs text-muted"><i class="fa-solid fa-star text-gold"></i> 4.95 Rating • Hero Electric Optima (MP-04-EB-1204)</span>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="tel:+919820000001" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call Rider</span>
+              </a>
+              <button class="btn btn-outline btn-sm" onclick="sendRiderMsg()">
+                <i class="fa-solid fa-message"></i>
+                <span>Message</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Delivery Details Grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border-subtle);">
+            <div>
+              <span class="text-xs text-muted font-bold" style="text-transform: uppercase;">Delivery Address</span>
+              <p style="font-size: 0.875rem; font-weight: 700; color: var(--color-text-dark); margin-top: 0.25rem;">
+                <i class="fa-solid fa-location-dot text-primary"></i> 12 MP Nagar, Zone 1, Bhopal - 462011
+              </p>
+            </div>
+            <div>
+              <span class="text-xs text-muted font-bold" style="text-transform: uppercase;">Order Items & Total</span>
+              <p style="font-size: 0.875rem; font-weight: 700; color: var(--color-text-dark); margin-top: 0.25rem;">
+                <i class="fa-solid fa-receipt text-primary"></i> 2 Items • ₹471.00 (Verified UPI)
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('user', 'track');
+    });
+
+    function sendRiderMsg() {
+      const msg = prompt('Enter a short delivery instruction for rider Aman (e.g. Ring doorbell, leave at door):', 'Please call when at the gate.');
+      if (msg) {
+        UI.showToast(`Message sent to rider Aman: "${msg}"`, 'success', 'fa-paper-plane');
+      }
+    }
+  </script>
+</body>
+</html>

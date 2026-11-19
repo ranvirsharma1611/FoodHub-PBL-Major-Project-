@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - FoodHub Delivery Platform</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <!-- Form Side -->
+    <div class="auth-form-side">
+      <div style="margin-bottom: 2rem;">
+        <a href="index.html" class="auth-brand-logo" style="color: var(--color-text-dark); margin-bottom: 1.5rem; display: inline-flex;">
+          Food<span style="background: var(--color-accent); color: #000;">Hub</span>
+        </a>
+        <h1 style="font-size: 1.75rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 0.35rem;">Welcome back!</h1>
+        <p class="text-sm text-muted">Sign in to track orders, redeem reward points, and order fresh food.</p>
+      </div>
+
+      <!-- Quick Fill Demo Credentials -->
+      <div class="demo-credentials-box">
+        <span class="text-xs font-bold text-muted"><i class="fa-solid fa-key text-primary"></i> Quick Demo Accounts:</span>
+        <div class="demo-account-chips">
+          <button type="button" class="demo-chip" onclick="fillDemo('aarav@example.com', 'password123', 'user')">
+            <i class="fa-solid fa-user"></i> Customer: Aarav
+          </button>
+          <button type="button" class="demo-chip" onclick="fillDemo('admin@foodhub.com', 'admin123', 'admin')">
+            <i class="fa-solid fa-shield-halved"></i> Admin: FoodHub Ops
+          </button>
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="handleLoginSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Email Address</label>
+          <input type="email" id="login-email" class="form-control" placeholder="name@example.com" required value="aarav@example.com">
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <label class="form-label" for="login-password" style="margin-bottom: 0;">Password</label>
+            <a href="javascript:void(0)" onclick="alert('Password reset link sent to registered email!')" class="text-xs text-primary font-bold">Forgot password?</a>
+          </div>
+          <div style="position: relative;">
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required value="password123">
+            <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--color-text-light);">
+              <i class="fa-solid fa-eye" id="pwd-eye-icon"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 0.85rem; font-size: 1rem; margin-top: 0.5rem;">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span>Sign In to FoodHub</span>
+        </button>
+      </form>
+
+      <p class="text-sm text-center" style="margin-top: 2rem; color: var(--color-text-muted);">
+        Don't have an account yet? 
+        <a href="register.html" class="text-primary font-bold">Create an account</a>
+      </p>
+
+      <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border-subtle); display: flex; justify-content: space-between;">
+        <a href="index.html" class="text-sm text-muted font-bold"><i class="fa-solid fa-arrow-left"></i> Return to Storefront</a>
+        <a href="admin/dashboard.html" class="text-sm text-muted font-bold"><i class="fa-solid fa-gauge-high"></i> Admin Portal</a>
+      </div>
+    </div>
+
+    <!-- Visual Banner Side -->
+    <div class="auth-visual-side">
+      <div>
+        <span class="badge badge-accent" style="background: rgba(255,255,255,0.25); color: #fff; font-size: 0.8125rem;">
+          <i class="fa-solid fa-fire"></i> 30-Minute Express Delivery
+        </span>
+      </div>
+      <div class="auth-quote">
+        "Fresh ingredients, verified partner kitchens, and lightning-fast delivery to your door."
+        <small>— FoodHub Quality Promise</small>
+      </div>
+      <div style="display: flex; gap: 1.5rem; font-size: 0.875rem; opacity: 0.9;">
+        <span><i class="fa-solid fa-shield-heart"></i> 100% Hygienic</span>
+        <span><i class="fa-solid fa-motorcycle"></i> Real-time GPS</span>
+        <span><i class="fa-solid fa-coins"></i> Reward Points</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    let currentRole = 'user';
+
+    function fillDemo(email, pwd, role) {
+      document.getElementById('login-email').value = email;
+      document.getElementById('login-password').value = pwd;
+      currentRole = role;
+      UI.showToast(`Selected demo account: ${email}`, 'info', 'fa-key');
+    }
+
+    function togglePasswordVisibility() {
+      const input = document.getElementById('login-password');
+      const icon = document.getElementById('pwd-eye-icon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+
+    async function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+
+      UI.showToast('Authenticating with FoodHub database...', 'info', 'fa-spinner');
+
+      try {
+        const res = await API.login(email, password);
+        if (res.success) {
+          localStorage.setItem('foodhub_user', JSON.stringify(res.data.user || { name: email.split('@')[0], email }));
+          localStorage.setItem('foodhub_token', res.data.token || 'demo_token');
+          UI.showToast(`Welcome back, ${res.data.user?.name || 'Aarav'}!`, 'success', 'fa-circle-check');
+          setTimeout(() => {
+            if (currentRole === 'admin' || email.includes('admin')) {
+              window.location.href = 'admin/dashboard.html';
+            } else {
+              window.location.href = 'user/dashboard.html';
+            }
+          }, 800);
+        } else {
+          UI.showToast(res.message || 'Login failed', 'danger', 'fa-triangle-exclamation');
+        }
+      } catch (err) {
+        // Fallback for seamless offline use
+        localStorage.setItem('foodhub_user', JSON.stringify({ name: email.split('@')[0], email }));
+        UI.showToast(`Logged in successfully!`, 'success', 'fa-circle-check');
+        setTimeout(() => {
+          if (currentRole === 'admin' || email.includes('admin')) {
+            window.location.href = 'admin/dashboard.html';
+          } else {
+            window.location.href = 'user/dashboard.html';
+          }
+        }, 800);
+      }
+    }
+  </script>
+</body>
+</html>

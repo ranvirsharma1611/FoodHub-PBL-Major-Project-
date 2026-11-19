@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Services & Help Desk 24/7 - FoodHub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Customer Care & Support 24/7</h1>
+            <p class="page-subtitle">Instant assistance with orders, refunds, kitchen queries, and rider delivery</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="tel:+918004567890" class="btn btn-primary">
+              <i class="fa-solid fa-phone"></i>
+              <span>Toll Free: 1800-456-7890</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3 Contact Channel Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+          <div class="stat-card" style="text-align: center; padding: 2rem 1.5rem;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem;">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 0.25rem;">24/7 Hotline</h3>
+            <p class="text-sm text-muted" style="margin-bottom: 1.25rem;">Talk directly with our support specialists</p>
+            <a href="tel:+918004567890" class="btn btn-outline btn-block">Call Helpline</a>
+          </div>
+
+          <div class="stat-card" style="text-align: center; padding: 2rem 1.5rem;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-success-light); color: var(--color-success); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem;">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 0.25rem;">Live Chat</h3>
+            <p class="text-sm text-muted" style="margin-bottom: 1.25rem;">Instant responses within 30 seconds</p>
+            <button class="btn btn-primary btn-block" style="background: var(--color-success);" onclick="startLiveChat()">Start Live Chat</button>
+          </div>
+
+          <div class="stat-card" style="text-align: center; padding: 2rem 1.5rem;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-info-light); color: var(--color-info); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem;">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 0.25rem;">Email Support</h3>
+            <p class="text-sm text-muted" style="margin-bottom: 1.25rem;">Detailed tickets resolved within 1 hour</p>
+            <a href="mailto:support@foodhub.com" class="btn btn-outline btn-block">support@foodhub.com</a>
+          </div>
+        </div>
+
+        <!-- Form & FAQ Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <!-- Submit Ticket Form -->
+          <div class="table-card" style="padding: 1.75rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 0.35rem;">
+              <i class="fa-solid fa-ticket text-primary"></i> Raise a Support Ticket
+            </h3>
+            <p class="text-sm text-muted" style="margin-bottom: 1.5rem;">Submit an inquiry directly to our priority support queue.</p>
+
+            <form onsubmit="handleTicketSubmit(event)">
+              <div class="form-group">
+                <label class="form-label">Customer Name</label>
+                <input type="text" id="tkt-name" class="form-control" required value="Aarav Sharma">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="tkt-email" class="form-control" required value="aarav@example.com">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Issue Category</label>
+                <select id="tkt-cat" class="form-control">
+                  <option value="delay">Order Delay or Tracking Question</option>
+                  <option value="quality">Food Quality or Missing Dish</option>
+                  <option value="payment">Refund or Payment Status</option>
+                  <option value="coupon">Discount Coupon Issue</option>
+                  <option value="other">General Inquiry & Feedback</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Message Details</label>
+                <textarea id="tkt-msg" rows="4" class="form-control" placeholder="Please describe the issue with order ID if applicable..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Submit Support Ticket</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- FAQ Accordion -->
+          <div class="table-card" style="padding: 1.75rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 0.35rem;">
+              <i class="fa-solid fa-circle-question text-primary"></i> Frequently Asked Questions
+            </h3>
+            <p class="text-sm text-muted" style="margin-bottom: 1.5rem;">Instant answers to common customer questions</p>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <details style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.85rem 1rem; background: var(--color-surface-subtle);" open>
+                <summary style="font-size: 0.875rem; font-weight: 700; cursor: pointer; color: var(--color-text-dark);">How can I track my food delivery rider in real time?</summary>
+                <p class="text-sm text-muted" style="margin-top: 0.5rem; line-height: 1.6;">
+                  Visit the "Live Order Tracker" page or click on the tracking banner in your dashboard to view the delivery progress timeline and assigned rider contact info.
+                </p>
+              </details>
+
+              <details style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.85rem 1rem; background: var(--color-surface-subtle);">
+                <summary style="font-size: 0.875rem; font-weight: 700; cursor: pointer; color: var(--color-text-dark);">How do refunds and order cancellations work?</summary>
+                <p class="text-sm text-muted" style="margin-top: 0.5rem; line-height: 1.6;">
+                  Orders can be cancelled before kitchen preparation starts. If approved, digital payments are refunded automatically to the original method in 2 hours.
+                </p>
+              </details>
+
+              <details style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.85rem 1rem; background: var(--color-surface-subtle);">
+                <summary style="font-size: 0.875rem; font-weight: 700; cursor: pointer; color: var(--color-text-dark);">Can I redeem FoodHub reward points on any order?</summary>
+                <p class="text-sm text-muted" style="margin-top: 0.5rem; line-height: 1.6;">
+                  Yes! You earn 18 reward points per ₹100 spent. Points can be redeemed for free Molten Choco Lava Cakes, thickshakes, or flat discount vouchers.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('user', 'support');
+    });
+
+    function handleTicketSubmit(e) {
+      e.preventDefault();
+      const tktId = `TKT-${Math.floor(1000 + Math.random() * 9000)}`;
+      UI.showToast(`Ticket #${tktId} received! Our support team will reply within 30 minutes.`, 'success', 'fa-envelope-circle-check');
+      document.getElementById('tkt-msg').value = '';
+    }
+
+    function startLiveChat() {
+      UI.showToast('Connecting to FoodHub Live Chat Agent...', 'info', 'fa-comments');
+      setTimeout(() => {
+        UI.showToast('Agent Priya joined: "Hi Aarav! How may I assist you with your FoodHub order?"', 'success', 'fa-headset');
+      }, 1500);
+    }
+  </script>
+</body>
+</html>

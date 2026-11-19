@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Past Orders - FoodHub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">My Past Orders</h1>
+            <p class="page-subtitle">Itemized invoice breakdown, delivery records, and one-click reordering</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="reports.html" class="btn btn-outline">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Export Statements</span>
+            </a>
+            <a href="../index.html#menu-section" class="btn btn-primary">
+              <i class="fa-solid fa-plus"></i>
+              <span>Order Food</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Orders Table Card -->
+        <div class="table-card">
+          <div class="table-header">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn btn-primary btn-sm" onclick="filterOrders('all')">All Orders (4)</button>
+              <button class="btn btn-outline btn-sm" onclick="filterOrders('Delivered')">Delivered</button>
+              <button class="btn btn-outline btn-sm" onclick="filterOrders('Active')">Out for Delivery</button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <input type="text" id="order-search-input" placeholder="Search dish or restaurant..." class="form-control" style="width: 240px; padding: 0.4rem 0.85rem;" oninput="searchOrders(this.value)">
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order Ref</th>
+                  <th>Date & Time</th>
+                  <th>Restaurant</th>
+                  <th>Dishes Ordered</th>
+                  <th>Payment</th>
+                  <th>Amount</th>
+                  <th>Delivery Status</th>
+                  <th>Invoice</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="orders-list-tbody">
+                <tr>
+                  <td><strong>#FH-1001</strong></td>
+                  <td>Today, 08:45 PM</td>
+                  <td>Spice Garden</td>
+                  <td>Paneer Butter Masala (x1), Veg Biryani (x1)</td>
+                  <td><span class="badge badge-info">UPI</span></td>
+                  <td><strong>₹471.00</strong></td>
+                  <td><span class="badge badge-warning"><i class="fa-solid fa-motorcycle"></i> Out for Delivery</span></td>
+                  <td><button class="btn btn-outline btn-sm" onclick="downloadInvoice('FH-1001')"><i class="fa-solid fa-download"></i> Receipt</button></td>
+                  <td><a href="track.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-location-crosshairs"></i> Track Live</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-1002</strong></td>
+                  <td>Yesterday, 07:15 PM</td>
+                  <td>Burger Hub</td>
+                  <td>Classic Cheeseburger (x1), Crispy French Fries (x1), Belgian Thickshake (x1)</td>
+                  <td><span class="badge badge-info">Card</span></td>
+                  <td><strong>₹508.00</strong></td>
+                  <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td><button class="btn btn-outline btn-sm" onclick="downloadInvoice('FH-1002')"><i class="fa-solid fa-download"></i> Receipt</button></td>
+                  <td><button class="btn btn-outline btn-sm" onclick="reorderItems('Burger Hub')"><i class="fa-solid fa-rotate-right"></i> Reorder</button></td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-1003</strong></td>
+                  <td>14 Oct 2026, 09:30 PM</td>
+                  <td>Pizza Corner</td>
+                  <td>Woodfired Margherita Pizza (x1), Toasted Herb Garlic Bread (x1)</td>
+                  <td><span class="badge badge-info">UPI</span></td>
+                  <td><strong>₹376.50</strong></td>
+                  <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td><button class="btn btn-outline btn-sm" onclick="downloadInvoice('FH-1003')"><i class="fa-solid fa-download"></i> Receipt</button></td>
+                  <td><button class="btn btn-outline btn-sm" onclick="reorderItems('Pizza Corner')"><i class="fa-solid fa-rotate-right"></i> Reorder</button></td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-1004</strong></td>
+                  <td>12 Oct 2026, 01:20 PM</td>
+                  <td>Burger Hub</td>
+                  <td>Crispy French Fries (x2), Chilled Virgin Mint Mojito (x1)</td>
+                  <td><span class="badge badge-info">Cash</span></td>
+                  <td><strong>₹309.00</strong></td>
+                  <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td><button class="btn btn-outline btn-sm" onclick="downloadInvoice('FH-1004')"><i class="fa-solid fa-download"></i> Receipt</button></td>
+                  <td><button class="btn btn-outline btn-sm" onclick="reorderItems('Burger Hub')"><i class="fa-solid fa-rotate-right"></i> Reorder</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('user', 'orders');
+    });
+
+    function downloadInvoice(orderRef) {
+      UI.showToast(`Generating tax invoice for ${orderRef}...`, 'info', 'fa-file-invoice');
+      setTimeout(() => {
+        const text = `FOODHUB OFFICIAL TAX INVOICE\nOrder Ref: ${orderRef}\nDate: ${new Date().toLocaleDateString()}\nStatus: PAID IN FULL\nDelivered by FoodHub Express Logistics\nThank you for ordering with FoodHub!`;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `Invoice_${orderRef}.txt`;
+        a.click();
+        UI.showToast(`Invoice ${orderRef} downloaded successfully!`, 'success', 'fa-circle-check');
+      }, 500);
+    }
+
+    function reorderItems(restaurantName) {
+      UI.showToast(`Added dishes from ${restaurantName} to your cart!`, 'success', 'fa-cart-plus');
+      setTimeout(() => {
+        window.location.href = '../index.html#menu-section';
+      }, 700);
+    }
+
+    function searchOrders(q) {
+      const rows = document.querySelectorAll('#orders-list-tbody tr');
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = text.includes(q.toLowerCase()) ? '' : 'none';
+      });
+    }
+
+    function filterOrders(filter) {
+      const rows = document.querySelectorAll('#orders-list-tbody tr');
+      rows.forEach(r => {
+        if (filter === 'all') {
+          r.style.display = '';
+        } else if (filter === 'Delivered') {
+          r.style.display = r.innerText.includes('Delivered') ? '' : 'none';
+        } else {
+          r.style.display = r.innerText.includes('Out for Delivery') ? '' : 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

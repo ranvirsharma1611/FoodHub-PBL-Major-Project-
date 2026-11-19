@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Order Reports & Analytics - FoodHub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Order Analytics & Spending Reports</h1>
+            <p class="page-subtitle">Monthly food expenditures, coupon savings, and tax invoice exports</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-primary" onclick="exportCSVReport()">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Export CSV Statement</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+          <div class="stat-card">
+            <span class="stat-label">Total Spend (2026)</span>
+            <div class="stat-val" style="margin-top: 0.5rem;">₹1,566.50</div>
+            <div class="stat-subtitle text-muted"><i class="fa-solid fa-receipt"></i> Across 4 orders</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Promotional Discounts</span>
+            <div class="stat-val text-success" style="margin-top: 0.5rem;">₹280.00</div>
+            <div class="stat-subtitle text-success"><i class="fa-solid fa-arrow-down"></i> 18% avg order discount</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">FoodHub Coins Earned</span>
+            <div class="stat-val" style="color: #d97706; margin-top: 0.5rem;">280 pts</div>
+            <div class="stat-subtitle text-muted"><i class="fa-solid fa-coins"></i> Value approx ₹140.00</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Top Preferred Partner</span>
+            <div class="stat-val" style="font-size: 1.35rem; margin-top: 0.5rem;">Spice Garden</div>
+            <div class="stat-subtitle text-muted"><i class="fa-solid fa-bowl-rice"></i> 42% of all orders</div>
+          </div>
+        </div>
+
+        <!-- Cuisine Breakdown & Summary -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+          <div class="table-card" style="padding: 1.5rem;">
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 1.25rem;">
+              <i class="fa-solid fa-chart-pie text-primary"></i> Cuisine Spending Distribution
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem;">
+                  <span>North Indian & Biryani (Spice Garden)</span>
+                  <span>₹660 (42%)</span>
+                </div>
+                <div style="height: 8px; background: var(--color-surface-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                  <div style="width: 42%; height: 100%; background: var(--color-primary); border-radius: var(--radius-full);"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem;">
+                  <span>Burgers & Fast Food (Burger Hub)</span>
+                  <span>₹450 (29%)</span>
+                </div>
+                <div style="height: 8px; background: var(--color-surface-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                  <div style="width: 29%; height: 100%; background: #2563eb; border-radius: var(--radius-full);"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem;">
+                  <span>Woodfired Pizzas & Garlic Bread (Pizza Corner)</span>
+                  <span>₹330 (21%)</span>
+                </div>
+                <div style="height: 8px; background: var(--color-surface-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                  <div style="width: 21%; height: 100%; background: #16a34a; border-radius: var(--radius-full);"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem;">
+                  <span>Desserts & Coolers</span>
+                  <span>₹126.50 (8%)</span>
+                </div>
+                <div style="height: 8px; background: var(--color-surface-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                  <div style="width: 8%; height: 100%; background: #9333ea; border-radius: var(--radius-full);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Statistics -->
+          <div class="table-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark); margin-bottom: 1.25rem;">
+                <i class="fa-solid fa-receipt text-primary"></i> Tax Invoice & Billing Ledger
+              </h3>
+              <p class="text-sm text-muted" style="line-height: 1.6;">
+                Every FoodHub order includes an official GST-compliant tax invoice. All invoices are archived in your customer ledger and can be downloaded anytime for personal expense accounting.
+              </p>
+            </div>
+            <div style="background: var(--color-surface-subtle); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem;">
+                <span>Total Food Value:</span>
+                <strong>₹1,846.50</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--color-success);">
+                <span>Coupon Discounts:</span>
+                <strong>-₹280.00</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--color-border); font-size: 1rem; font-weight: 800;">
+                <span>Net Billed Amount:</span>
+                <span class="text-primary">₹1,566.50</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('user', 'reports');
+    });
+
+    function exportCSVReport() {
+      UI.showToast('Generating CSV report statement...', 'info', 'fa-file-csv');
+      setTimeout(() => {
+        const csv = `Order_ID,Restaurant,Items,Amount,Payment,Date\n#FH-1,Spice Garden,"Paneer Butter Masala, Veg Biryani",471.00,UPI,2026-10-12\n#FH-2,Burger Hub,"Classic Cheeseburger, French Fries",339.00,Card,2026-10-13\n#FH-3,Pizza Corner,"Margherita Pizza, Garlic Bread",376.50,UPI,2026-10-14\n#FH-4,Burger Hub,"French Fries, Virgin Mint Mojito",309.00,Cash,2026-10-16\n`;
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'FoodHub_Spending_Report_2026.csv';
+        a.click();
+        UI.showToast('Report downloaded successfully!', 'success', 'fa-circle-check');
+      }, 500);
+    }
+  </script>
+</body>
+</html>

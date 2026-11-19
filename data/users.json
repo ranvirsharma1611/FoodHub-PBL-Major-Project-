@@ -1,0 +1,15 @@
+[
+  {
+    "id": "usr_1",
+    "name": "Ranvir Sharma",
+    "email": "ranvir@foodhub.com",
+    "password": "password123",
+    "phone": "+91 98765 43210",
+    "address": "Apt 4B, Green Glen Layout, Bellandur, Bengaluru",
+    "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80",
+    "savedAddresses": [
+      { "id": "addr_1", "tag": "Home", "address": "Apt 4B, Green Glen Layout, Bellandur, Bengaluru", "isDefault": true },
+      { "id": "addr_2", "tag": "Work", "address": "Tech Park Tower 3, 5th Floor, Outer Ring Road", "isDefault": false }
+    ]
+  }
+]

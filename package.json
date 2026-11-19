@@ -1,0 +1,29 @@
+{
+  "name": "foodhub-delivery",
+  "version": "2.0.0",
+  "description": "Full-stack interactive Food Delivery Website with MySQL backend and modular architecture",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "test": "node backend/test/smoke-test.js"
+  },
+  "keywords": [
+    "food-delivery",
+    "restaurant",
+    "ecommerce",
+    "nodejs",
+    "mysql",
+    "javascript"
+  ],
+  "author": "Ranvir Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.8",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.24.6",
+    "pg": "^8.23.1"
+  }
+}

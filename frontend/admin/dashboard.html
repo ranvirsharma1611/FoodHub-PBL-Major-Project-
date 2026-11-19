@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Operations Command - FoodHub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <div id="app-sidebar-container"></div>
+
+    <div class="app-main">
+      <div id="app-topbar-container"></div>
+
+      <div class="content-body">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Platform Command & Operations</h1>
+            <p class="page-subtitle">Real-time marketplace telemetry, live kitchen dispatch, and driver assignments</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="orders.html" class="btn btn-primary">
+              <i class="fa-solid fa-bell-concierge"></i>
+              <span>Live Dispatch Board</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 Platform KPI Metrics -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Platform Gross Revenue</span>
+              <div class="stat-icon" style="background: var(--color-success-light); color: var(--color-success);">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+              </div>
+            </div>
+            <div class="stat-val">₹48,920.00</div>
+            <div class="stat-subtitle text-success"><i class="fa-solid fa-arrow-up"></i> +14.2% this week</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Total Orders Today</span>
+              <div class="stat-icon" style="background: var(--color-primary-light); color: var(--color-primary);">
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+            </div>
+            <div class="stat-val">142 Orders</div>
+            <div class="stat-subtitle text-muted"><i class="fa-solid fa-clock"></i> 98.4% on-time dispatch</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Active Kitchen Partners</span>
+              <div class="stat-icon" style="background: var(--color-accent-light); color: var(--color-accent);">
+                <i class="fa-solid fa-store"></i>
+              </div>
+            </div>
+            <div class="stat-val">3 Restaurants</div>
+            <div class="stat-subtitle text-muted">Spice Garden, Burger Hub, Pizza Corner</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Active Delivery Riders</span>
+              <div class="stat-icon" style="background: var(--color-info-light); color: var(--color-info);">
+                <i class="fa-solid fa-motorcycle"></i>
+              </div>
+            </div>
+            <div class="stat-val">3 Riders Live</div>
+            <div class="stat-subtitle text-muted"><i class="fa-solid fa-location-dot"></i> Bhopal & Indore Zones</div>
+          </div>
+        </div>
+
+        <!-- Live Orders Queue -->
+        <div class="table-card">
+          <div class="table-header">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-dark);">
+                <i class="fa-solid fa-satellite-dish text-primary"></i> Real-Time Orders Stream
+              </h3>
+              <p class="text-sm text-muted">MySQL live order queue with state transition actions</p>
+            </div>
+            <a href="orders.html" class="btn btn-outline btn-sm">Full Dispatch Board</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order Ref</th>
+                  <th>Customer</th>
+                  <th>Restaurant</th>
+                  <th>Dishes</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Assigned Driver</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#FH-1001</strong></td>
+                  <td>Aarav Sharma</td>
+                  <td>Spice Garden</td>
+                  <td>Paneer Butter Masala (x1), Veg Biryani (x1)</td>
+                  <td>₹471.00</td>
+                  <td><span class="badge badge-warning"><i class="fa-solid fa-spinner fa-spin"></i> Out for Delivery</span></td>
+                  <td>Aman Verma</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm" onclick="markDelivered('FH-1001')">
+                      <i class="fa-solid fa-circle-check"></i> Complete
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-1002</strong></td>
+                  <td>Pooja Patel</td>
+                  <td>Burger Hub</td>
+                  <td>Classic Cheeseburger (x1), Fries (x1)</td>
+                  <td>₹339.00</td>
+                  <td><span class="badge badge-info">Kitchen Preparing</span></td>
+                  <td>Rahul Sen</td>
+                  <td>
+                    <button class="btn btn-outline btn-sm" onclick="dispatchOrder('FH-1002')">
+                      <i class="fa-solid fa-motorcycle"></i> Dispatch
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#FH-1003</strong></td>
+                  <td>Ranvir Sharma</td>
+                  <td>Pizza Corner</td>
+                  <td>Margherita Gourmet Pizza (x1)</td>
+                  <td>₹220.00</td>
+                  <td><span class="badge badge-success">Delivered</span></td>
+                  <td>Aman Verma</td>
+                  <td><span class="text-xs text-muted font-bold">Fulfilled</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.initPortalLayout('admin', 'dashboard');
+    });
+
+    function markDelivered(id) {
+      UI.showToast(`Order ${id} marked as DELIVERED in MySQL!`, 'success', 'fa-circle-check');
+    }
+
+    function dispatchOrder(id) {
+      UI.showToast(`Order ${id} dispatched with delivery rider Rahul Sen!`, 'info', 'fa-motorcycle');
+    }
+  </script>
+</body>
+</html>
